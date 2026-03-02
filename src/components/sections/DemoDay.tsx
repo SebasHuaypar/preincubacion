@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { Calendar, Youtube, Trophy } from 'lucide-react'
+import { Calendar, Users, Trophy } from 'lucide-react'
 
 export default function DemoDay() {
     return (
@@ -35,17 +35,17 @@ export default function DemoDay() {
                                     <Calendar className="w-6 h-6 text-yellow-400" />
                                 </div>
                                 <div>
-                                    <p className="font-semibold text-white">Sábado 11 de Abril 2026</p>
+                                    <p className="font-semibold text-white">Sábado 18 de Abril 2026</p>
                                     <p className="text-sm text-neutral-400">Evento de cierre del programa</p>
                                 </div>
                             </div>
 
                             <div className="flex items-center gap-4">
                                 <div className="w-12 h-12 bg-yellow-400/10 rounded-xl flex items-center justify-center border border-yellow-400/20">
-                                    <Youtube className="w-6 h-6 text-yellow-400" />
+                                    <Users className="w-6 h-6 text-yellow-400" />
                                 </div>
                                 <div>
-                                    <p className="font-semibold text-white">Transmisión en YouTube Live</p>
+                                    <p className="font-semibold text-white">Evento abierto a la comunidad</p>
                                     <p className="text-sm text-neutral-400">Accesible para todo el público</p>
                                 </div>
                             </div>

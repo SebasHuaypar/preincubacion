@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import { Mail, Phone, Instagram, Linkedin, Youtube } from 'lucide-react'
+import { Mail, Phone, Instagram, Linkedin } from 'lucide-react'
 import LegalModal from '@/components/LegalModal'
 
 export default function Footer() {
@@ -76,9 +76,9 @@ export default function Footer() {
                             <h3 className="font-bold text-lg mb-4">Contacto</h3>
                             <ul className="space-y-3 text-neutral-300 text-sm">
                                 <li>
-                                    <a href="mailto:camila.cabrera@start-lima.com" className="flex items-center gap-2 hover:text-yellow-400 transition-colors">
+                                    <a href="mailto:camila.cabrera@startlima.org" className="flex items-center gap-2 hover:text-yellow-400 transition-colors">
                                         <Mail className="w-4 h-4" />
-                                        camila.cabrera@start-lima.com
+                                        camila.cabrera@startlima.org
                                     </a>
                                 </li>
                                 <li>
@@ -98,14 +98,11 @@ export default function Footer() {
                         <div>
                             <h3 className="font-bold text-lg mb-4">Síguenos</h3>
                             <div className="flex gap-3">
-                                <a href="#" className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-yellow-400 hover:text-navy-900 transition-colors">
+                                <a href="https://www.instagram.com/start_lima/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-yellow-400 hover:text-navy-900 transition-colors">
                                     <Instagram className="w-5 h-5" />
                                 </a>
-                                <a href="#" className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-yellow-400 hover:text-navy-900 transition-colors">
+                                <a href="https://www.linkedin.com/company/start-lima" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-yellow-400 hover:text-navy-900 transition-colors">
                                     <Linkedin className="w-5 h-5" />
-                                </a>
-                                <a href="#" className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-yellow-400 hover:text-navy-900 transition-colors">
-                                    <Youtube className="w-5 h-5" />
                                 </a>
                             </div>
                         </div>

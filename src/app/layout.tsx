@@ -94,8 +94,8 @@ export default function RootLayout({
                   "Programa intensivo de 1 mes para construir tu primer MVP",
                 eventAttendanceMode:
                   "https://schema.org/OnlineEventAttendanceMode",
-                startDate: "2026-03-01",
-                endDate: "2026-04-11",
+                startDate: "2026-03-21",
+                endDate: "2026-04-18",
                 isAccessibleForFree: true,
                 organizer: {
                   "@type": "Organization",

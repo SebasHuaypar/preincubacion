@@ -91,6 +91,11 @@ export default function LegalModal({ isOpen, onClose, type }: LegalModalProps) {
     useEffect(() => {
         if (!isOpen) return
 
+        const scrollY = window.scrollY
+        document.body.style.position = 'fixed'
+        document.body.style.top = `-${scrollY}px`
+        document.body.style.left = '0'
+        document.body.style.right = '0'
         document.body.style.overflow = 'hidden'
 
         const handleEscape = (e: KeyboardEvent) => {
@@ -101,7 +106,13 @@ export default function LegalModal({ isOpen, onClose, type }: LegalModalProps) {
 
         return () => {
             document.removeEventListener('keydown', handleEscape)
+            const scrollY = document.body.style.top
+            document.body.style.position = ''
+            document.body.style.top = ''
+            document.body.style.left = ''
+            document.body.style.right = ''
             document.body.style.overflow = ''
+            window.scrollTo(0, parseInt(scrollY || '0') * -1)
         }
     }, [isOpen, onClose])
 
@@ -128,7 +139,7 @@ export default function LegalModal({ isOpen, onClose, type }: LegalModalProps) {
                             role="dialog"
                             aria-modal="true"
                             aria-labelledby="legal-modal-title"
-                            className="bg-[#0b1027]/95 backdrop-blur-xl rounded-2xl shadow-2xl w-full max-w-2xl max-h-[85vh] overflow-hidden pointer-events-auto border border-white/[0.08] ring-1 ring-white/5"
+                            className="bg-[#0b1027]/60 backdrop-blur-3xl rounded-2xl shadow-[0_8px_60px_rgba(7,11,24,0.8)] w-full max-w-2xl max-h-[85vh] overflow-hidden pointer-events-auto ring-1 ring-white/[0.06]"
                         >
                             {/* Header */}
                             <div className="px-8 pt-8 pb-4 text-center relative border-b border-white/[0.06]">
@@ -149,7 +160,7 @@ export default function LegalModal({ isOpen, onClose, type }: LegalModalProps) {
                             </div>
 
                             {/* Content */}
-                            <div className="overflow-y-auto max-h-[calc(85vh-120px)] px-8 py-6 modal-scrollbar space-y-6">
+                            <div className="overflow-y-auto max-h-[calc(85vh-120px)] px-8 py-6 modal-scrollbar space-y-6" style={{ overscrollBehavior: 'contain' }}>
                                 {content.sections.map((section, idx) => (
                                     <div key={idx}>
                                         <h3 className="text-sm font-semibold text-white/80 mb-2">

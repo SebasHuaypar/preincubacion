@@ -78,7 +78,7 @@ export default function Hero({ onOpenModal }: { onOpenModal: () => void }) {
                             <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                         </button>
                         <p className="mt-4 text-neutral-400 text-sm">
-                            Postula hasta el 10 de marzo
+                            Postula hasta el 16 de marzo
                         </p>
                     </motion.div>
 

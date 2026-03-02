@@ -9,7 +9,7 @@ const programWeeks = [
     {
         week: 1,
         title: 'Mentalidad Emprendedora',
-        dates: '14 - 21 Marzo',
+        dates: '21 - 28 Marzo',
         objective: 'Activar el mindset emprendedor, fomentar la mentalidad de crecimiento y formar equipos conscientes de sus habilidades',
         sessions: [
             'Introducción al ecosistema emprendedor',
@@ -22,7 +22,7 @@ const programWeeks = [
     {
         week: 2,
         title: 'Innovar desde el problema',
-        dates: '24 - 27 Marzo',
+        dates: '31 Mar - 4 Abril',
         objective: 'Comprender al usuario, identificar problemas reales y validarlos con evidencia',
         sessions: [
             'Identificación y Validación de Problemas',
@@ -34,7 +34,7 @@ const programWeeks = [
     {
         week: 3,
         title: 'De la idea al prototipo',
-        dates: '31 Mar - 3 Abril',
+        dates: '7 - 11 Abril',
         objective: 'Diseñar soluciones, priorizarlas y construir un prototipo o MVP inicial',
         sessions: [
             'Generación y Priorización de Soluciones: Del Problema al Valor',
@@ -46,7 +46,7 @@ const programWeeks = [
     {
         week: 4,
         title: 'Comunica, conecta y lanza',
-        dates: '7 - 11 Abril',
+        dates: '14 - 18 Abril',
         objective: 'Comunicar claramente la propuesta de valor y preparar a los equipos para presentar su proyecto',
         sessions: [
             'El Arte del Pitch: Storytelling y Estructura para Inversionistas',

@@ -31,7 +31,7 @@ export default function FinalCTA({ onOpenModal }: { onOpenModal: () => void }) {
                         <div className="flex items-center justify-center gap-2 text-yellow-400 mb-10">
                             <Clock className="w-5 h-5" />
                             <p className="font-semibold">
-                                Cupos limitados • Cierre de postulaciones: 10 de Marzo
+                                Cupos limitados • Cierre de postulaciones: 16 de Marzo
                             </p>
                         </div>
 

@@ -62,6 +62,11 @@ export default function ApplicationModal({ isOpen, onClose }: ApplicationModalPr
     useEffect(() => {
         if (!isOpen) return
 
+        const scrollY = window.scrollY
+        document.body.style.position = 'fixed'
+        document.body.style.top = `-${scrollY}px`
+        document.body.style.left = '0'
+        document.body.style.right = '0'
         document.body.style.overflow = 'hidden'
 
         previousFocusRef.current = document.activeElement as HTMLElement
@@ -99,7 +104,13 @@ export default function ApplicationModal({ isOpen, onClose }: ApplicationModalPr
             clearTimeout(timer)
             document.removeEventListener('keydown', handleEscape)
             document.removeEventListener('keydown', handleTab)
+            const scrollY = document.body.style.top
+            document.body.style.position = ''
+            document.body.style.top = ''
+            document.body.style.left = ''
+            document.body.style.right = ''
             document.body.style.overflow = ''
+            window.scrollTo(0, parseInt(scrollY || '0') * -1)
             if (previousFocusRef.current) previousFocusRef.current.focus()
         }
     }, [isOpen, onClose])
@@ -186,7 +197,7 @@ export default function ApplicationModal({ isOpen, onClose }: ApplicationModalPr
                             role="dialog"
                             aria-modal="true"
                             aria-labelledby="modal-title"
-                            className="bg-[#0b1027]/95 backdrop-blur-xl rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-hidden pointer-events-auto border border-white/[0.08] ring-1 ring-white/5"
+                            className="bg-[#0b1027]/60 backdrop-blur-3xl rounded-2xl shadow-[0_8px_60px_rgba(7,11,24,0.8)] w-full max-w-2xl max-h-[90vh] overflow-hidden pointer-events-auto ring-1 ring-white/[0.06]"
                         >
                             {/* Header */}
                             <div className="px-8 pt-8 pb-0 text-center relative">
@@ -199,22 +210,72 @@ export default function ApplicationModal({ isOpen, onClose }: ApplicationModalPr
                                     <X className="w-4 h-4 text-white/40" />
                                 </button>
 
-                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-yellow-400/10 rounded-full mb-4 border border-yellow-400/20">
-                                    <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full animate-pulse" />
-                                    <span className="text-yellow-400 text-xs font-medium tracking-wide">Postulaciones abiertas</span>
-                                </div>
+                                {(() => {
+                                    // Deadline: March 16, 2026 23:59:59 (Peru time UTC-5)
+                                    const deadline = new Date('2026-03-17T04:59:59Z') // March 16 23:59:59 UTC-5
+                                    const isPastDeadline = new Date() > deadline
 
-                                <h2 id="modal-title" className="text-2xl font-bold text-white mb-1">
-                                    Postula al programa
-                                </h2>
-                                <p className="text-white/40 text-sm">
-                                    Pre-incubación START Lima 2026
-                                </p>
+                                    return isPastDeadline ? (
+                                        <>
+                                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-red-400/10 rounded-full mb-4 border border-red-400/20">
+                                                <div className="w-1.5 h-1.5 bg-red-400 rounded-full" />
+                                                <span className="text-red-400 text-xs font-medium tracking-wide">Postulaciones cerradas</span>
+                                            </div>
+                                            <h2 id="modal-title" className="text-2xl font-bold text-white mb-1">
+                                                Postulaciones cerradas
+                                            </h2>
+                                            <p className="text-white/40 text-sm">
+                                                Pre-incubación START Lima 2026
+                                            </p>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-yellow-400/10 rounded-full mb-4 border border-yellow-400/20">
+                                                <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full animate-pulse" />
+                                                <span className="text-yellow-400 text-xs font-medium tracking-wide">Postulaciones abiertas</span>
+                                            </div>
+                                            <h2 id="modal-title" className="text-2xl font-bold text-white mb-1">
+                                                Postula al programa
+                                            </h2>
+                                            <p className="text-white/40 text-sm">
+                                                Pre-incubación START Lima 2026
+                                            </p>
+                                        </>
+                                    )
+                                })()}
                             </div>
 
                             {/* Form Content */}
-                            <div className="overflow-y-auto max-h-[calc(90vh-160px)] px-8 py-6 modal-scrollbar">
-                                {submitStatus === 'success' ? (
+                            <div className="overflow-y-auto max-h-[calc(90vh-160px)] px-8 py-6 modal-scrollbar" style={{ overscrollBehavior: 'contain' }}>
+                                {/* Deadline check */}
+                                {new Date() > new Date('2026-03-17T04:59:59Z') ? (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        className="text-center py-16"
+                                    >
+                                        <div className="w-16 h-16 bg-white/[0.03] rounded-full flex items-center justify-center mx-auto mb-6 border border-white/10">
+                                            <AlertCircle className="w-8 h-8 text-white/40" />
+                                        </div>
+                                        <h3 className="text-xl font-bold text-white mb-2">
+                                            Las postulaciones han cerrado
+                                        </h3>
+                                        <p className="text-white/40 text-sm max-w-sm mx-auto mb-6">
+                                            El plazo para postular al programa de pre-incubación START Lima 2026 finalizó el 16 de marzo.
+                                        </p>
+                                        <p className="text-white/30 text-xs">
+                                            Síguenos en nuestras redes para enterarte de futuras convocatorias.
+                                        </p>
+                                        <div className="flex justify-center gap-3 mt-4">
+                                            <a href="https://www.instagram.com/start_lima/" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-white/60 text-sm transition-colors">
+                                                Instagram
+                                            </a>
+                                            <a href="https://www.linkedin.com/company/start-lima" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-white/60 text-sm transition-colors">
+                                                LinkedIn
+                                            </a>
+                                        </div>
+                                    </motion.div>
+                                ) : submitStatus === 'success' ? (
                                     <motion.div
                                         initial={{ opacity: 0, y: 10 }}
                                         animate={{ opacity: 1, y: 0 }}
