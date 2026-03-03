@@ -76,9 +76,9 @@ export default function Footer() {
                             <h3 className="font-bold text-lg mb-4">Contacto</h3>
                             <ul className="space-y-3 text-neutral-300 text-sm">
                                 <li>
-                                    <a href="mailto:camila.cabrera@startlima.org" className="flex items-center gap-2 hover:text-yellow-400 transition-colors">
+                                    <a href="mailto:camila.cabrera@start-lima.com" className="flex items-center gap-2 hover:text-yellow-400 transition-colors">
                                         <Mail className="w-4 h-4" />
-                                        camila.cabrera@startlima.org
+                                        camila.cabrera@star-tlima.com
                                     </a>
                                 </li>
                                 <li>
