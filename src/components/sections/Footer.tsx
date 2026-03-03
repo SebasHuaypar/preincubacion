@@ -78,7 +78,7 @@ export default function Footer() {
                                 <li>
                                     <a href="mailto:camila.cabrera@start-lima.com" className="flex items-center gap-2 hover:text-yellow-400 transition-colors">
                                         <Mail className="w-4 h-4" />
-                                        camila.cabrera@star-tlima.com
+                                        camila.cabrera@start-lima.com
                                     </a>
                                 </li>
                                 <li>
